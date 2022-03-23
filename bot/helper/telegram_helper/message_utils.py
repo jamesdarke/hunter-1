@@ -61,7 +61,7 @@ def sendPrivate(text: str, bot, update: Update, reply_markup: InlineKeyboardMark
             keyboard = [
             [InlineKeyboardButton("𝐒𝐓𝐀𝐑𝐓 𝐌𝐄", url = f"{botstart}")],
             [InlineKeyboardButton("𝐉𝐎𝐈𝐍 𝐇𝐄𝐑𝐄", url = f"{LOG_CHANNEL_LINK}")]]
-            sendMarkup(f"𝙳𝙴𝙰𝚁 {uname},\n\n<b>ɪ ғᴏᴜɴᴅ ᴛʜᴀᴛ ʏᴏᴜ ʜᴀᴠᴇɴ'ᴛ sᴛᴀʀᴛᴇᴅ ᴍᴇ ɪɴ ᴘᴍ (ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ) ʏᴇᴛ.</b>\n\n𝐅𝐑𝐎𝐌 𝐍𝐎𝐖 𝐎𝐍 𝐈 𝐖𝐈𝐋𝐋 𝐆𝐈𝐕𝐄 𝐋𝐈𝐍𝐊 𝐈𝐍 𝐏𝐌 (𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐂𝐇𝐀𝐓) 𝐀𝐍𝐃 𝐋𝐎𝐆 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 𝐎𝐍𝐋𝐘", bot, update, reply_markup=InlineKeyboardMarkup(keyboard))
+            sendMarkup(f"𝙳𝙴𝙰𝚁 {uname},\n<b>ɪ ғᴏᴜɴᴅ ᴛʜᴀᴛ ʏᴏᴜ ʜᴀᴠᴇɴ'ᴛ sᴛᴀʀᴛᴇᴅ ᴍᴇ ɪɴ ᴘᴍ (ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ) ʏᴇᴛ.</b>\n\n𝐅𝐑𝐎𝐌 𝐍𝐎𝐖 𝐎𝐍 𝐈 𝐖𝐈𝐋𝐋 𝐆𝐈𝐕𝐄 𝐋𝐈𝐍𝐊 𝐈𝐍 𝐏𝐌 (𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐂𝐇𝐀𝐓) 𝐀𝐍𝐃 𝐋𝐎𝐆 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 𝐎𝐍𝐋𝐘", bot, update, reply_markup=InlineKeyboardMarkup(keyboard))
             return
 
 
@@ -135,7 +135,7 @@ def update_all_messages():
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
-        msg += f"\n\n<b>🔺 UL:</b> {ulspeed}ps\n<b>🔻 DL:</b> {dlspeed}ps\n"
+        msg += f"\n<b>🔺 UL:</b> {ulspeed}ps\t│\t<b>🔻 DL:</b> {dlspeed}ps\n"
     with status_reply_dict_lock:
         for chat_id in list(status_reply_dict.keys()):
             if status_reply_dict[chat_id] and msg != status_reply_dict[chat_id].text:
@@ -158,7 +158,7 @@ def sendStatusMessage(msg, bot):
     progress, buttons = get_readable_message()
     if progress is None:
         progress, buttons = get_readable_message()
-    progress += f"\n<b>🕊️ Free:</b> {free}"
+    progress += f"<b>🕊️ Free:</b> {free}"
     with download_dict_lock:
         dlspeed_bytes = 0
         uldl_bytes = 0
@@ -176,7 +176,7 @@ def sendStatusMessage(msg, bot):
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
-        progress += f"\n\n<b>🔺 UL:</b> {ulspeed}ps\n<b>🔻 DL:</b> {dlspeed}ps\n"
+        progress += f"\n<b>🔺 UL:</b> {ulspeed}ps\t│\t<b>🔻 DL:</b> {dlspeed}ps\n"
     with status_reply_dict_lock:
         if msg.message.chat.id in list(status_reply_dict.keys()):
             try:
