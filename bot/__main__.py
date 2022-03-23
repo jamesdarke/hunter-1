@@ -43,17 +43,19 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>ℹ️ Bot Uptime ℹ️</b>\n<b>{currentTime}</b>\n\n' \
-            f'<b>▶️ Start Time ▶️</b>\n<b>{current}</b>\n\n' \
-            f'<b>⚙️ System Usage ⚙️</b>\n' \
-            f'<b>💿 Disk Space:</b> <b>{total}</b>\n' \
-            f'<b>📀 Used:</b> <b>{used}</b>\n' \
-            f'<b>🕊️ Free:</b> <b>{free}</b>\n' \
-            f'<b>💻 CPU:</b> <b>{cpuUsage}%</b>\n' \
-            f'<b>🖥️ RAM:</b> <b>{memory}%</b>\n' \
-            f'<b>💽 DISK:</b> <b>{disk}%</b>\n\n' \
-            f'<b>📊Data Usage📊</b>\n<b>📤 Upload:</b> <b>{sent}</b>\n' \
-            f'<b>📥 Download:</b> <b>{recv}</b>'
+    stats = f'╭───『🤖 𝑩𝒐𝒕 𝑺𝒕𝒂𝒕𝒊𝒄𝒔 🤖』\n│\n├─⏳<b>Bot Uptime:</b> {currentTime}\n│\n'\
+            f'├─<b>ℹ️ Bot Uptime ℹ️</b>\n<b>{currentTime}</b>\n\n' \
+            f'├─<b>▶️ Start Time ▶️</b>\n<b>{current}</b>\n\n' \
+            f'├─<b>⚙️ System Usage ⚙️</b>\n' \
+            f'├─<b>💿 Disk Space:</b> <b>{total}</b>\n' \
+            f'├─<b>📀 Used:</b> <b>{used}</b>\n' \
+            f'├─<b>🕊️ Free:</b> <b>{free}</b>\n' \
+            f'├─<b>💻 CPU:</b> <b>{cpuUsage}%</b>\n' \
+            f'├─<b>🖥️ RAM:</b> <b>{memory}%</b>\n' \
+            f'├─<b>💽 DISK:</b> <b>{disk}%</b>\n\n' \
+            f'├─<b>📊Data Usage📊</b>\n<b>📤 Upload:</b> <b>{sent}</b>\n' \
+            f'├─<b>📥 Download:</b> <b>{recv}</b>' \
+            f'╰───『💥 <a href="https://t.me/+SpnPh2Gc8kHwwAAF"><b>𝐑𝐨𝐨𝐭 𝐆𝐚𝐦𝐞𝐫</b></a> 💥』\n'
 
     update.effective_message.reply_photo(IMAGE_X, stats, parse_mode=ParseMode.HTML)
 
@@ -75,7 +77,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         else :
             sendMarkup(start_string, context.bot, update, reply_markup)
     else :
-        sendMessage(f"Oops! not a Authorized user.", context.bot, update)
+        sendMessage(f"🤬Chalaja BSDK🤬\nJoin channel & use", context.bot, update)
 
 
 def restart(update, context):
