@@ -33,7 +33,7 @@ IMAGE_X = f"{IMAGE_URL}"
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
-    current = now.strftime('📅: %d/%m/%Y\n⏲️: %I:%M:%S %p')
+    current = now.strftime('├─📅: %d/%m/%Y\n├─⏲️: %I:%M:%S %p')
     total, used, free = shutil.disk_usage('.')
     total = get_readable_file_size(total)
     used = get_readable_file_size(used)
@@ -44,17 +44,17 @@ def stats(update, context):
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
     stats = f'╭───『🤖 𝑩𝒐𝒕 𝑺𝒕𝒂𝒕𝒊𝒄𝒔 🤖』\n│\n├─⏳<b>Bot Uptime:</b> {currentTime}\n│\n'\
-            f'├─<b>ℹ️ Bot Uptime ℹ️</b>\n<b>{currentTime}</b>\n\n' \
-            f'├─<b>▶️ Start Time ▶️</b>\n<b>{current}</b>\n\n' \
+            f'├─<b>ℹ️ Bot Uptime ℹ️</b>\t<b>{currentTime}</b>\n│\n' \
+            f'├─<b>▶️ Start Time ▶️</b>\n<b>{current}</b>\n│\n' \
             f'├─<b>⚙️ System Usage ⚙️</b>\n' \
             f'├─<b>💿 Disk Space:</b> <b>{total}</b>\n' \
             f'├─<b>📀 Used:</b> <b>{used}</b>\n' \
             f'├─<b>🕊️ Free:</b> <b>{free}</b>\n' \
             f'├─<b>💻 CPU:</b> <b>{cpuUsage}%</b>\n' \
             f'├─<b>🖥️ RAM:</b> <b>{memory}%</b>\n' \
-            f'├─<b>💽 DISK:</b> <b>{disk}%</b>\n\n' \
-            f'├─<b>📊Data Usage📊</b>\n<b>📤 Upload:</b> <b>{sent}</b>\n' \
-            f'├─<b>📥 Download:</b> <b>{recv}</b>' \
+            f'├─<b>💽 DISK:</b> <b>{disk}%</b>\n│\n' \
+            f'├─<b>📊Data Usage📊</b>\n├─<b>📤 Upload:</b> <b>{sent}</b>\n' \
+            f'├─<b>📥 Download:</b> <b>{recv}</b>\n' \
             f'╰───『💥 <a href="https://t.me/+SpnPh2Gc8kHwwAAF"><b>𝐑𝐨𝐨𝐭 𝐆𝐚𝐦𝐞𝐫</b></a> 💥』\n'
 
     update.effective_message.reply_photo(IMAGE_X, stats, parse_mode=ParseMode.HTML)
